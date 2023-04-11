@@ -122,24 +122,25 @@ ctkDICOMModelPrivate::~ctkDICOMModelPrivate()
 //------------------------------------------------------------------------------
 void ctkDICOMModelPrivate::init()
 {
+  // Do not translate these strings (later they are used in the database query)
   QMap<int, QVariant> data;
-  data[Qt::DisplayRole] = QString("Name");
+  data[Qt::DisplayRole] = "Name";
   this->Headers << data;
-  data[Qt::DisplayRole] = QString("Age");
+  data[Qt::DisplayRole] = "Age";
   this->Headers << data;
-  data[Qt::DisplayRole] = QString("Scan");
+  data[Qt::DisplayRole] = "Scan";
   this->Headers << data;
-  data[Qt::DisplayRole] = QString("Date");
+  data[Qt::DisplayRole] = "Date";
   this->Headers << data;
-  data[Qt::DisplayRole] = QString("Subject ID");
+  data[Qt::DisplayRole] = "Subject ID";
   this->Headers << data;
-  data[Qt::DisplayRole] = QString("Number");
+  data[Qt::DisplayRole] = "Number";
   this->Headers << data;
-  data[Qt::DisplayRole] = QString("Institution");
+  data[Qt::DisplayRole] = "Institution";
   this->Headers << data;
-  data[Qt::DisplayRole] = QString("Referrer");
+  data[Qt::DisplayRole] = "Referrer";
   this->Headers << data;
-  data[Qt::DisplayRole] = QString("Performer");
+  data[Qt::DisplayRole] = "Performer";
   this->Headers << data;
 }
 
@@ -507,13 +508,13 @@ QVariant ctkDICOMModel::data ( const QModelIndex & dataIndex, int role ) const
   QVariant dataValue=d->value(parentIndex, dataIndex.row(), field);
   if (dataValue.isNull())
   {
-    if (columnName.compare("Name")==0)
+    if (columnName.compare(tr("Name"))==0)
     {
-      return QString("No description");
+      return tr("No description");
     }
   }
 
-  if (columnName.compare("Name")==0)
+  if (columnName.compare(tr("Name"))==0)
     {
     OFString dicomName = dataValue.toString().toStdString().c_str();
     OFString formattedName;
